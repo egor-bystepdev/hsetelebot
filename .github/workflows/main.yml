@@ -1,5 +1,5 @@
 name: linter-check
-on: [push]
+on: [push, pull_request]
 jobs:
   run-linter:
     runs-on: ubuntu-latest
