@@ -3,7 +3,7 @@ import os
 
 
 def printreply(update, context) -> None:
-    update.message.reply_text("hello world!!!!!!!!!!!!!!!!!!")
+    update.message.reply_text("hello timofey")
 
 
 def main():
