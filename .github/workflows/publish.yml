@@ -30,8 +30,6 @@ jobs:
           context: bot/
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-jobs:
   docker1:
     runs-on: ubuntu-latest
     steps:
