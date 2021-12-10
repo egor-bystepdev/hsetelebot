@@ -3,7 +3,8 @@ import os
 
 
 def printreply(update, context) -> None:
-    update.message.reply_text("hello timofey")
+    for i in range(50):
+        update.message.reply_text("привет привет")
 
 
 def main():
