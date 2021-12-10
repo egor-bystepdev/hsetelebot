@@ -5,6 +5,7 @@ on:
     workflows: ["Docker build"]
     types:
       - completed
+
 jobs:
   build:
     name: Create Release
