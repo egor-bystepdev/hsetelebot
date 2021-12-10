@@ -32,7 +32,7 @@ jobs:
         with:
           push: true
           context: bot/
-          tags: ${{ github.sha }}
+          tags: ${{ github.ref }}
           labels: ${{ steps.meta.outputs.labels }}
       -
         name: Build and push latest
