@@ -1,0 +1,7 @@
+ steps:
+ - uses: actions/checkout@v2  
+ - name: Python Linter
+   uses: sunnysid3up/python-linter@master
+   with:
+     source: "bot"
+     mypy-options: "--ignore-missing-imports --show-error-codes"
