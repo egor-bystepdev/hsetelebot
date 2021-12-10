@@ -1,5 +1,7 @@
 name: Docker build
-workflow_run:
+
+on:
+  workflow_run:
     workflows: ["linter-check"]
     types:
       - completed
