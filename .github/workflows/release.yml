@@ -10,7 +10,6 @@ jobs:
   build:
     name: Create Release
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,6 +20,7 @@ jobs:
           running-workflow-name: Docker build
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
+          allowed-conclusions: success
 
       - name: Create Release
         id: create_release

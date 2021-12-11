@@ -7,7 +7,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,6 +18,7 @@ jobs:
           running-workflow-name: Create Release
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
+          allowed-conclusions: success
 
       - name: Docker meta
         id: meta
