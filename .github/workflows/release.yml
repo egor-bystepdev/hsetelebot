@@ -1,10 +1,9 @@
 name: Create Release
 
 on:
-  workflow_run:
-    workflows: ["Docker build"]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*'
 
 
 jobs:
@@ -15,6 +14,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Wait for tests to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: Docker build
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 20
+          allowed-conclusions: success
+          
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
