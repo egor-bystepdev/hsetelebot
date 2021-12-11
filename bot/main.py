@@ -1,19 +1,26 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    CallbackContext,
+)
 import pytesseract
 import os
 from PIL import Image
 import logging
 import traceback
 
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract' # ваш путь до tesseract
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"  # ваш путь до tesseract
 
 
 def get_text_from_image(path):
     logging.info("getting image")
     img = Image.open(path)
     logging.info("image opened")
-    return pytesseract.image_to_string(img, lang="rus+eng",timeout=30)
+    return pytesseract.image_to_string(img, lang="rus+eng", timeout=30)
+
 
 def echo_photo(update: Update, context: CallbackContext) -> None:
     print(update.message.photo)
@@ -22,7 +29,7 @@ def echo_photo(update: Update, context: CallbackContext) -> None:
     result = "Что-то пошло не так, попробуйте позже"
     try:
         path = "images/photo.jpg"
-        lst[-1].get_file().download(path, timeout=5);
+        lst[-1].get_file().download(path, timeout=5)
         logging.info("download ok")
         result = get_text_from_image(path)
         logging.info("getting text ok")
@@ -32,10 +39,11 @@ def echo_photo(update: Update, context: CallbackContext) -> None:
         update.message.reply_text(result)
     except Exception as e:
         update.message.reply_text("Текст не определен")
-    
+
 
 def echo_no_photo(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Это не фото")
+
 
 def help(update: Update, context: CallbackContext) -> None:
     update.message.reply_text("Пришлите фотографию, текст с которой вам нужен")
@@ -54,6 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-#/usr/src/app
