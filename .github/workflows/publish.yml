@@ -19,7 +19,6 @@ jobs:
           running-workflow-name: Create Release
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
-          allowed-conclusions: success
 
       - name: Docker meta
         id: meta

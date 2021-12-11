@@ -21,7 +21,6 @@ jobs:
           running-workflow-name: Docker build
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
-          allowed-conclusions: success
 
       - name: Create Release
         id: create_release
