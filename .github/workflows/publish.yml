@@ -1,9 +1,8 @@
 name: Publish Docker image
-on:
-  workflow_run:
-    workflows: ["Create Release"]
-    types:
-      - completed
+on:  
+  release:  
+    types: [created, published]  
+
 jobs:
   docker:
     runs-on: ubuntu-latest
