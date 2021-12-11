@@ -15,7 +15,7 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.ref }}
-          running-workflow-name: 'Linter, Build, Release'
+          check-name: 'Create Release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
 
