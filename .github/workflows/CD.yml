@@ -12,9 +12,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Wait for tests to succeed
-        uses: lewagon/wait-on-check-action@v1.0.0
+        uses: lewagon/wait-on-check-action@v1.1.1
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.sha }}
+          running-workflow-name: 'Linter, Build, Release'
           check-name: 'Create Release'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 20
