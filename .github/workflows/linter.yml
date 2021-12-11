@@ -4,7 +4,6 @@ on:
     tags:
       - 'v*' 
 
-      
 jobs:
   run-linter:
     runs-on: ubuntu-latest
