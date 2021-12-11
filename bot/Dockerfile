@@ -1,10 +1,17 @@
-FROM python:3.8
+FROM ubuntu:18.04
 
+RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y software-properties-common
+RUN apt-get update && apt-get install -y tesseract-ocr-all 
+RUN apt-get update && apt-get install -y python3
+RUN apt-get update && apt-get install -y python3-pip
+RUN python3 -m pip install --upgrade pip
+RUN pip3 install Pillow
 
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 
-CMD [ "python", "./main.py" ]
+CMD ["python3", "main.py"]
