@@ -1,8 +1,8 @@
 name: Publish Docker image
-on:
-  push:
-    tags:
-      - 'v*'
+on:  
+  release:  
+    types: [created, published]  
+
 
 jobs:
   docker:
@@ -10,15 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Wait for tests to succeed
-        uses: lewagon/wait-on-check-action@v1.1.1
-        with:
-          ref: ${{ github.ref }}
-          running-workflow-name: 'Linter, Build, Release'
-          check-name: 'Create Release'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 20
 
       - name: Docker meta
         id: meta
@@ -35,5 +26,5 @@ jobs:
         with:
           push: true
           context: bot/
-          tags: ${{ github.ref}}
+          tags: ${{ github.event.release.tag_name }}
           labels: ${{ steps.meta.outputs.labels }}
