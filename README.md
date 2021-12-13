@@ -8,5 +8,6 @@
 
 Оказывается телеграм недавно тоже добавил такую возможность, можно сравнить результаты:
 
-<img src="https://i.ibb.co/qdS0M6J/2021-12-14-00-18-33.jpg" width="300" height="400" /> <img src="https://i.ibb.co/SQgDL0B/2021-12-14-00-18-38.jpg" width="250" height="400" />
+<img src="https://i.ibb.co/qdS0M6J/2021-12-14-00-18-33.jpg" width="250" height="400" /> <img src="https://i.ibb.co/SQgDL0B/2021-12-14-00-18-38.jpg" width="250" height="400" />
 
+Бот запущен на aws, использовал watchtower, [ссылка на docker-compose](https://github.com/egor-bystepdev/hsetelebot/blob/main/utils/docker-compose.yaml)
