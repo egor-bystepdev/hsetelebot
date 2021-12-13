@@ -21,7 +21,6 @@ def get_text_from_image(path):
     logging.info("image opened")
     return pytesseract.image_to_string(img, lang="rus+eng", timeout=30)
 
-
 def echo_photo(update: Update, context: CallbackContext) -> None:
     print(update.message.photo)
     lst = update.message.photo
@@ -46,7 +45,7 @@ def echo_no_photo(update: Update, context: CallbackContext) -> None:
 
 
 def help(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("Пришлите фотографию, текст с которой вам нужен")
+    update.message.reply_text("Пришлите изображение с которого Вам нужен текст")
 
 
 def main():
